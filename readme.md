@@ -16,12 +16,16 @@ qmk-vim can be installed with several popular Vim plugin managers. Choose your f
 
 Place this in your .vimrc:
 
+```
 Plug 'hitsmaxft/qmk-vim'
+```
 
 Then run the following in Vim:
 
+```
 :source %
 :PlugInstall
+```
 
 ### Vundle
 
