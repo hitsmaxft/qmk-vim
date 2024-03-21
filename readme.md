@@ -1,12 +1,12 @@
 # qmk-vim Plugin, for qmk user who using vim editor
 
-Welcome to the qmk-vim plugin! This Vim plugin provides syntax highlighting for QMK keymap files , as well as virtual text support for symbol keycodes, to enhance your firmware development process within the editor.
+Welcome to the qmk-vim plugin! This Vim plugin provides syntax highlighting for QMK keymap files , as well as virtual text support for symbol keycodes, to enhance keymap  editing  experience
 
 ## Features
 
-- Syntax Highlighting for keymap.json
-- Symbol Keycode Virtual Text
-- JSON Highlighting
+- Enhanced hjson syntax support for keymap.json
+- todo: syntax enhance for keymap.c keyboard.json/info.json
+- showing  Symbol Keycode in Virtual Text
 
 ## Installation
 
