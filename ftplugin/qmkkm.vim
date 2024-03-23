@@ -2,6 +2,9 @@ vim9script
 
 #test line   [ "KC_1", "KC_3", "MT(1, KC_F1)", "MO(2)", "KC_BSLS" ]
 
+
+const col_num_tag = "qmk_keymap_key_col_nm"
+
 var qmk_keymap: dict<string>  = { KC_A: 'a',
     KC_B: 'b',
     KC_C: 'c',
@@ -156,11 +159,11 @@ def g:QMK_KCFunction(): string
 enddef
 
 
-def Init_num_props(col_num_tag: string): void
+def InitNumProps(): void
     var col_num_tag_type = prop_type_get(col_num_tag)
 
     if col_num_tag_type == {}
-        hlset([{ name: col_num_tag, ctermfg: 'black', ctermbg: 'gray'}])
+        hlset([{ name: col_num_tag, ctermfg: 'black', ctermbg: 'darkgray'}])
         prop_type_add(col_num_tag, {highlight: col_num_tag})
     endif
 enddef
@@ -168,8 +171,9 @@ enddef
 def InitSymbolTag(col_tag: string): void
     var col_type = prop_type_get(col_tag)
 
+    #test line   [ "KC_1", "KC_3", "MT(1, KC_F1)", "MO(2)", "KC_BSLS" ]
     if col_type == {}
-        hlset([{ name: col_tag, ctermfg: 'lightblue', ctermbg: 'Black'}])
+        hlset([{ name: col_tag, ctermfg: 'blue', ctermbg: 'Black'}])
         prop_type_add(col_tag, {highlight: col_tag})
     endif
 enddef
@@ -200,15 +204,13 @@ def g:RenderKeyMapInfo(): void
 
             #echom keycode .. ' at '  .. string(current)
 
-            var col_num_tag = "qmk_keymap_key_col_nm"
-
-            Init_num_props(col_num_tag)
+            InitNumProps()
 
             # add col number
             prop_add(
                 row, starts,
                 {
-                    text: string(cnt) .. " ",
+                    text: string(cnt) .. ":",
                     type: col_num_tag 
                 }
             )
@@ -219,9 +221,9 @@ def g:RenderKeyMapInfo(): void
                 InitSymbolTag(col_tag)
 
                 prop_add(
-                    row, starts + len(keycode) + 1,
+                    row, starts,
                     {
-                        text: " " .. qmk_symbol[keycode],
+                        text: qmk_symbol[keycode] .. " ",
                         type: col_tag 
                     }
                 )
