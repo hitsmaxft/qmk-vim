@@ -216,13 +216,7 @@ def g:RenderKeyMapInfo(): void
             if has_key(qmk_symbol, keycode)
                 var col_tag = "inline_kc_" .. keycode
 
-                var col_type = prop_type_get(col_tag)
-
-                if col_type == {}
-                    hlset([{ name: col_tag, ctermfg: 'lightblue', ctermbg: 'Black'}])
-                    prop_type_add(col_tag, {highlight: col_tag})
-
-                endif
+                InitSymbolTag(col_tag)
 
                 prop_add(
                     row, starts + len(keycode) + 1,
