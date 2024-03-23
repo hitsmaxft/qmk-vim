@@ -1,6 +1,6 @@
 vim9script
 
-#test line   [ "KC_1", "KC_3", "MT(1, KC_F1)", "KC_BSLS" ]
+#test line   [ "KC_1", "KC_3", "MT(1, KC_F1)", "MO(2)", "KC_BSLS" ]
 
 var qmk_keymap: dict<string>  = { KC_A: 'a',
     KC_B: 'b',
@@ -180,7 +180,7 @@ def g:RenderKeyMapInfo(): void
     const kc_pattern = 'KC_[_A-Z]\{3,\}'
 
     ##match keycode in sr
-    const kc_pattern_str = '[''"]\{1\}\zs\(MT\|KC_\|QC_\|LT\)[ ,_()A-Z0-9]*\ze[''"]\{1\}'
+    const kc_pattern_str = '[''"]\{1\}\zs\(MT\|MO\|KC_\|QC_\|LT\)[ ,_()A-Z0-9]*\ze[''"]\{1\}'
 
     for row in range(1, line('$'))
         var current = getline(row)
