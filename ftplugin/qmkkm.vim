@@ -2,10 +2,6 @@ vim9script
 
 #test line   [ "KC_1", "KC_3", "MT(1, KC_F1)", "KC_BSLS" ]
 
-def g:MyFunc()
-    execute('call InlineKeySybomls()')
-enddef
-
 var qmk_keymap: dict<string>  = { KC_A: 'a',
     KC_B: 'b',
     KC_C: 'c',
@@ -175,12 +171,11 @@ def InitSymbolTag(col_tag: string): void
     if col_type == {}
         hlset([{ name: col_tag, ctermfg: 'lightblue', ctermbg: 'Black'}])
         prop_type_add(col_tag, {highlight: col_tag})
-
     endif
 enddef
 
 
-def g:InlineKeySybomls(): void
+def g:RenderKeyMapInfo(): void
 
     const kc_pattern = 'KC_[_A-Z]\{3,\}'
 
@@ -249,8 +244,8 @@ enddef
 augroup QMKKeyMapAuto
     au!
     au FileReadPost keymap.json setlocal filetype=hjson.qmkkm
-    au BufEnter keymap.json :call InlineKeySybomls()
-    au BufWritePost keymap.json :call InlineKeySybomls()
-    au FileType qmkkm :call InlineKeySybomls()
+    au BufEnter keymap.json :call RenderKeyMapInfo()
+    au BufWritePost keymap.json :call RenderKeyMapInfo()
+    au FileType qmkkm :call RenderKeyMapInfo()
 augroup END
 
