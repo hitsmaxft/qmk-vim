@@ -160,7 +160,7 @@ def Init_num_props(col_num_tag: string): void
     var col_num_tag_type = prop_type_get(col_num_tag)
 
     if col_num_tag_type == {}
-        hlset([{ name: col_num_tag, ctermfg: 'gray', ctermbg: 'Black'}])
+        hlset([{ name: col_num_tag, ctermfg: 'black', ctermbg: 'gray'}])
         prop_type_add(col_num_tag, {highlight: col_num_tag})
     endif
 enddef
@@ -245,6 +245,7 @@ augroup QMKKeyMapAuto
     au!
     au FileReadPost keymap.json setlocal filetype=hjson.qmkkm
     au BufEnter keymap.json :call RenderKeyMapInfo()
+    au BufRead keymap.json :call RenderKeyMapInfo()
     au BufWritePost keymap.json :call RenderKeyMapInfo()
     au FileType qmkkm :call RenderKeyMapInfo()
 augroup END
