@@ -112,7 +112,7 @@ var qmk_keymap: dict<string>  = { KC_A: 'a',
     KC_TRNS: '______' }
 
 var qmk_symbol = { KC_ENT: '↩',
-            KC_ESC: 'Escape',
+            KC_ESC: '␛',
             KC_BSPC: 'BS',
             KC_TAB: 'T',
             KC_SPC: ' ',
@@ -146,13 +146,13 @@ var qmk_symbol = { KC_ENT: '↩',
             KC_RIGHT_CURLY_BRACE: '}',
             KC_PIPE: '|',
             KC_LCTL: 'LCtrl',
-            KC_LSFT: 'LShift',
+            KC_LSFT: 'L⇧',
             KC_LALT: 'LAlt',
-            KC_LGUI: 'LGui',
+            KC_LGUI: 'L⌘',
             KC_RCTL: 'RCtrl',
-            KC_RSFT: 'RShift',
+            KC_RSFT: 'R⇧',
             KC_RALT: 'RAlt',
-            KC_RGUI: 'RGui' }
+            KC_RGUI: 'L⌘' }
 
 def g:QMK_KCFunction(): string
     var l:curr_word = expand('<cword>')
